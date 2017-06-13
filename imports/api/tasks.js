@@ -20,16 +20,10 @@ if (Meteor.isServer) {
 Meteor.methods({
   'tasks.insert'(text,date) {
     check(text, String,date, Date);
-
     // Make sure the user is logged in before inserting a task
     if (! Meteor.userId()) {
       throw new Meteor.Error('not-authorized');
     }
-
-    //update
-    
-    //update
-
     Tasks.insert({
       text,date,
       createdAt: new Date(),
@@ -37,6 +31,19 @@ Meteor.methods({
       username: Meteor.user().username,
     });
   },
+
+  //update
+  'tasks.update'(id,text,date){
+
+  //  console.log(id,text,date);
+
+    Tasks.update(id, {   //id คือ ที่ ที่ ต้องการ update
+      $set: { text: text,  //ค่าเก่า : ค่าใหม่
+      date: date},
+    });
+  },
+  //update
+
   'tasks.remove'(taskId) {
     check(taskId, String);
 

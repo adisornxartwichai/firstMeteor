@@ -2,8 +2,9 @@
   <br>
   <span id="editEvent"></span><br>
 <li class="{{#if checked}}checked{{/if}} {{#if private}}private{{/if}}">
+  {{#if isOwner}}
     <button class="delete">&times;</button>
-
+{{/if}}
     <input type="checkbox" checked="{{checked}}" class="toggle-checked" />
 
     {{#if isOwner}}
