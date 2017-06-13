@@ -29,7 +29,7 @@ Template.task.events({
     Meteor.call('tasks.setPrivate', this._id, !this.private);
   },
   'click .edit'(){
-      document.getElementById("editEvent").innerHTML = "<form class='update'><div align='center'>edit event : <input type='text' name='text' id='text' value="+this.text+" > edit date : <input name='date' type='date' id='date' value="+this.date+"><br><br><button type='submit'>edit</button></div></form>";
+      document.getElementById("editEvent").innerHTML = "<form class='update' id="+this._id+"><div align='center'>edit event : <input type='text' name='text' id='text' value="+this.text+" > edit date : <input name='date' type='date' id='date' value="+this.date+"><br><br><button type='submit'>edit</button></div></form>";
 
   },
 
@@ -42,7 +42,20 @@ Template.task.events({
     var text = document.getElementById('text').value;
     var date = document.getElementById('date').value;
 
-    Meteor.call('tasks.update',id,text,date);   //ส่งตัว value ไปให้ tasks.update
+
+
+    Meteor.call('tasks.update', id, text,date, function(error, result) {
+    				if (result) {
+               document.getElementById(id).style.display = 'none';
+    				} else {
+    					console.log(error);
+
+    				}
+
+    			});
+
+    //console.log(Meteor.call('tasks.update',id,text,date));
+  //  Meteor.call('tasks.update',id,text,date);   //ส่งตัว value ไปให้ tasks.update
 
   }
 });

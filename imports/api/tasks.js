@@ -37,7 +37,7 @@ Meteor.methods({
 
   //  console.log(id,text,date);
 
-    Tasks.update(id, {   //id คือ ที่ ที่ ต้องการ update
+  return  Tasks.update(id, {   //id คือ ที่ ที่ ต้องการ update
       $set: { text: text,  //ค่าเก่า : ค่าใหม่
       date: date},
     });
