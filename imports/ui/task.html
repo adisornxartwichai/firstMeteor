@@ -1,0 +1,28 @@
+<template name="task">
+  <br>
+  <span id="editEvent"></span><br>
+<li class="{{#if checked}}checked{{/if}} {{#if private}}private{{/if}}">
+    <button class="delete">&times;</button>
+
+    <input type="checkbox" checked="{{checked}}" class="toggle-checked" />
+
+    {{#if isOwner}}
+      <button class="toggle-private">
+        {{#if private}}
+          Private
+        {{else}}
+          Public
+        {{/if}}
+      </button>
+
+      <button class="edit" onclick="editEvent()">edit event</button>
+    {{/if}}
+
+
+    <span class="text"><strong>{{username}}</strong> - {{text}} Due : {{date}}</span><br>
+
+  </li>
+
+
+
+</template>
