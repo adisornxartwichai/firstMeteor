@@ -11,6 +11,8 @@ Template.task.helpers({
   },
 });
 
+
+
 Template.task.events({
   'click .toggle-checked'() {
     // Set the checked property to the opposite of its current value
